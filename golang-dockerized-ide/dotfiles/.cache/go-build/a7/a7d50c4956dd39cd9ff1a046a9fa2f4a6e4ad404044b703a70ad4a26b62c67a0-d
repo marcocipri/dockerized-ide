@@ -1,9 +1,0 @@
-./detatch.go
-./doc.go
-./enums.go
-./log.go
-./protocol.go
-./span.go
-./tsclient.go
-./tsprotocol.go
-./tsserver.go

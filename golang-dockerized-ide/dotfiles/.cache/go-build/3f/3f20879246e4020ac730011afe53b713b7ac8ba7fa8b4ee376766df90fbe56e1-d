@@ -1,6 +1,0 @@
-./builtin.go
-./doc.go
-./ident.go
-./main.go
-./pkg.go
-./unexported.go
