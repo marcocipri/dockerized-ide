@@ -1,0 +1,5 @@
+./funcs.go
+./parser.go
+./position.go
+./query.go
+./types.go

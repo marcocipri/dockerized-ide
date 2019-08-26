@@ -1,0 +1,14 @@
+./cache.go
+./check.go
+./external.go
+./file.go
+./gofile.go
+./load.go
+./modfile.go
+./parse.go
+./pkg.go
+./session.go
+./sumfile.go
+./token.go
+./view.go
+./watcher.go

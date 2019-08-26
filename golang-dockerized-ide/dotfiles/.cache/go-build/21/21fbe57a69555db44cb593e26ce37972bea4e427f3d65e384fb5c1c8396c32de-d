@@ -1,0 +1,10 @@
+./aggregate.go
+./checkstyle.go
+./config.go
+./directives.go
+./execute.go
+./issue.go
+./linters.go
+./main.go
+./partition.go
+./stringset.go

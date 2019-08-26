@@ -1,0 +1,17 @@
+./code_action.go
+./completion.go
+./definition.go
+./diagnostics.go
+./format.go
+./general.go
+./highlight.go
+./hover.go
+./link.go
+./references.go
+./rename.go
+./server.go
+./signature_help.go
+./symbols.go
+./text_synchronization.go
+./util.go
+./workspace.go

@@ -1,0 +1,113 @@
+
+package main
+
+import (
+
+	"os"
+
+	"testing"
+	"testing/internal/testdeps"
+
+
+	_test "github.com/olekukonko/tablewriter"
+
+
+
+)
+
+var tests = []testing.InternalTest{
+
+	{"TestNumLines", _test.TestNumLines},
+
+	{"TestCSVInfo", _test.TestCSVInfo},
+
+	{"TestCSVSeparator", _test.TestCSVSeparator},
+
+	{"TestNoBorder", _test.TestNoBorder},
+
+	{"TestWithBorder", _test.TestWithBorder},
+
+	{"TestPrintingInMarkdown", _test.TestPrintingInMarkdown},
+
+	{"TestPrintHeading", _test.TestPrintHeading},
+
+	{"TestPrintHeadingWithoutAutoFormat", _test.TestPrintHeadingWithoutAutoFormat},
+
+	{"TestPrintFooter", _test.TestPrintFooter},
+
+	{"TestPrintFooterWithoutAutoFormat", _test.TestPrintFooterWithoutAutoFormat},
+
+	{"TestPrintShortCaption", _test.TestPrintShortCaption},
+
+	{"TestPrintLongCaptionWithShortExample", _test.TestPrintLongCaptionWithShortExample},
+
+	{"TestPrintCaptionWithFooter", _test.TestPrintCaptionWithFooter},
+
+	{"TestPrintLongCaptionWithLongExample", _test.TestPrintLongCaptionWithLongExample},
+
+	{"TestPrintLine", _test.TestPrintLine},
+
+	{"TestAnsiStrip", _test.TestAnsiStrip},
+
+	{"TestSubclass", _test.TestSubclass},
+
+	{"TestAutoMergeRows", _test.TestAutoMergeRows},
+
+	{"TestClearRows", _test.TestClearRows},
+
+	{"TestClearFooters", _test.TestClearFooters},
+
+	{"TestMoreDataColumnsThanHeaders", _test.TestMoreDataColumnsThanHeaders},
+
+	{"TestMoreFooterColumnsThanHeaders", _test.TestMoreFooterColumnsThanHeaders},
+
+	{"TestSetColMinWidth", _test.TestSetColMinWidth},
+
+	{"TestWrapString", _test.TestWrapString},
+
+	{"TestNumberAlign", _test.TestNumberAlign},
+
+	{"TestCustomAlign", _test.TestCustomAlign},
+
+	{"TestTitle", _test.TestTitle},
+
+	{"TestWrap", _test.TestWrap},
+
+	{"TestWrapOneLine", _test.TestWrapOneLine},
+
+	{"TestUnicode", _test.TestUnicode},
+
+	{"TestDisplayWidth", _test.TestDisplayWidth},
+
+}
+
+var benchmarks = []testing.InternalBenchmark{
+
+}
+
+var examples = []testing.InternalExample{
+
+	{"ExampleShort", _test.ExampleShort, "+------+-----------------------+--------+\n| NAME |         SIGN          | RATING |\n+------+-----------------------+--------+\n| A    | The Good              |    500 |\n| B    | The Very very Bad Man |    288 |\n| C    | The Ugly              |    120 |\n| D    | The Gopher            |    800 |\n+------+-----------------------+--------+\n", false},
+
+	{"ExampleLong", _test.ExampleLong, "*================================*================================*===============================*==========*\n|              NAME              |              SIGN              |            RATING             |          |\n*================================*================================*===============================*==========*\n| Learn East has computers       |   Some Data                    |  Another Data                 |\n| with adapted keyboards with    |                                |                               |\n| enlarged print etc             |                                |                               |\n| Instead of lining up the       | the way across, he splits the  | Like most ergonomic keyboards | See Data |\n| letters all                    | keyboard in two                |                               |          |\n*================================*================================*===============================*==========*\n", false},
+
+	{"ExampleCSV", _test.ExampleCSV, "*============*===========*=========*\n| FIRST NAME | LAST NAME |   SSN   |\n*============*===========*=========*\n| John       | Barry     |  123456 |\n| Kathy      | Smith     |  687987 |\n| Bob        | McCornick | 3979870 |\n*============*===========*=========*\n", false},
+
+	{"Example_autowrap", _test.Example_autowrap, "mode 0 autoFmt false autoWrap false reflow false\n+-----+-------------------------------------------+\n| woo |                    waa                    |\n+-----+-------------------------------------------+\n| woo | A multiline                               |\n|     | string with some lines being really long. |\n+-----+-------------------------------------------+\n| woo |                    waa                    |\n+-----+-------------------------------------------+\nmode 0 autoFmt false autoWrap true reflow false\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\n| woo | A multiline                    |\n|     |                                |\n|     | string with some lines being   |\n|     | really long.                   |\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\nmode 0 autoFmt false autoWrap true reflow true\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\n| woo | A multiline string with some   |\n|     | lines being really long.       |\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\n\nmode 1 autoFmt false autoWrap false reflow false\n+-----+-------------------------------------------+\n| woo |                A multiline                |\n|     | string with some lines being really long. |\n+-----+-------------------------------------------+\n| woo | waa                                       |\n+-----+-------------------------------------------+\n| woo |                    waa                    |\n+-----+-------------------------------------------+\nmode 1 autoFmt false autoWrap true reflow false\n+-----+--------------------------------+\n| woo |          A multiline           |\n|     |                                |\n|     |  string with some lines being  |\n|     |          really long.          |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\nmode 1 autoFmt false autoWrap true reflow true\n+-----+--------------------------------+\n| woo |  A multiline string with some  |\n|     |    lines being really long.    |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\nmode 1 autoFmt true autoWrap false reflow false\n+-----+-------------------------------------------+\n| WOO |                A MULTILINE                |\n|     | STRING WITH SOME LINES BEING REALLY LONG  |\n+-----+-------------------------------------------+\n| woo | waa                                       |\n+-----+-------------------------------------------+\n| WOO |                    WAA                    |\n+-----+-------------------------------------------+\nmode 1 autoFmt true autoWrap true reflow false\n+-----+--------------------------------+\n| WOO |          A MULTILINE           |\n|     |                                |\n|     |  STRING WITH SOME LINES BEING  |\n|     |          REALLY LONG           |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n| WOO |              WAA               |\n+-----+--------------------------------+\nmode 1 autoFmt true autoWrap true reflow true\n+-----+--------------------------------+\n| WOO |  A MULTILINE STRING WITH SOME  |\n|     |    LINES BEING REALLY LONG     |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n| WOO |              WAA               |\n+-----+--------------------------------+\n\nmode 2 autoFmt false autoWrap false reflow false\n+-----+-------------------------------------------+\n| woo |                    waa                    |\n+-----+-------------------------------------------+\n| woo | waa                                       |\n+-----+-------------------------------------------+\n| woo |                A multiline                |\n|     | string with some lines being really long. |\n+-----+-------------------------------------------+\nmode 2 autoFmt false autoWrap true reflow false\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n| woo |          A multiline           |\n|     |                                |\n|     |  string with some lines being  |\n|     |          really long.          |\n+-----+--------------------------------+\nmode 2 autoFmt false autoWrap true reflow true\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n| woo |  A multiline string with some  |\n|     |    lines being really long.    |\n+-----+--------------------------------+\nmode 2 autoFmt true autoWrap false reflow false\n+-----+-------------------------------------------+\n| WOO |                    WAA                    |\n+-----+-------------------------------------------+\n| woo | waa                                       |\n+-----+-------------------------------------------+\n| WOO |                A MULTILINE                |\n|     | STRING WITH SOME LINES BEING REALLY LONG  |\n+-----+-------------------------------------------+\nmode 2 autoFmt true autoWrap true reflow false\n+-----+--------------------------------+\n| WOO |              WAA               |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n| WOO |          A MULTILINE           |\n|     |                                |\n|     |  STRING WITH SOME LINES BEING  |\n|     |          REALLY LONG           |\n+-----+--------------------------------+\nmode 2 autoFmt true autoWrap true reflow true\n+-----+--------------------------------+\n| WOO |              WAA               |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n| WOO |  A MULTILINE STRING WITH SOME  |\n|     |    LINES BEING REALLY LONG     |\n+-----+--------------------------------+\n\nmode 3 autoFmt false autoWrap false reflow false\n+-----+-------------------------------------------+\n| woo |                    waa                    |\n+-----+-------------------------------------------+\n| woo | waa                                       |\n+-----+-------------------------------------------+\n|                      A multiline                |\n|       string with some lines being really long. |\n+-----+-------------------------------------------+\nmode 3 autoFmt false autoWrap true reflow false\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n|                A multiline           |\n|                                      |\n|        string with some lines being  |\n|                really long.          |\n+-----+--------------------------------+\nmode 3 autoFmt false autoWrap true reflow true\n+-----+--------------------------------+\n| woo |              waa               |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n|        A multiline string with some  |\n|          lines being really long.    |\n+-----+--------------------------------+\nmode 3 autoFmt true autoWrap false reflow false\n+-----+-------------------------------------------+\n| WOO |                    WAA                    |\n+-----+-------------------------------------------+\n| woo | waa                                       |\n+-----+-------------------------------------------+\n|                      A MULTILINE                |\n|       STRING WITH SOME LINES BEING REALLY LONG  |\n+-----+-------------------------------------------+\nmode 3 autoFmt true autoWrap true reflow false\n+-----+--------------------------------+\n| WOO |              WAA               |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n|                A MULTILINE           |\n|                                      |\n|        STRING WITH SOME LINES BEING  |\n|                REALLY LONG           |\n+-----+--------------------------------+\nmode 3 autoFmt true autoWrap true reflow true\n+-----+--------------------------------+\n| WOO |              WAA               |\n+-----+--------------------------------+\n| woo | waa                            |\n+-----+--------------------------------+\n|        A MULTILINE STRING WITH SOME  |\n|          LINES BEING REALLY LONG     |\n+-----+--------------------------------+\n", false},
+
+}
+
+func init() {
+	testdeps.ImportPath = "github.com/olekukonko/tablewriter"
+}
+
+
+
+func main() {
+
+	m := testing.MainStart(testdeps.TestDeps{}, tests, benchmarks, examples)
+
+	os.Exit(m.Run())
+
+}
+

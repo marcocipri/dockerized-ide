@@ -1,0 +1,4 @@
+./candidate.go
+./cursorcontext.go
+./formatters.go
+./suggest.go

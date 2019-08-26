@@ -1,0 +1,5 @@
+./language.go
+./operands.go
+./plural.go
+./pluralspec.go
+./pluralspec_gen.go

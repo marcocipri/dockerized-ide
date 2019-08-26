@@ -1,0 +1,7 @@
+./check.go
+./cmd.go
+./definition.go
+./format.go
+./info.go
+./query.go
+./serve.go
