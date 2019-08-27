@@ -14,4 +14,5 @@
 #git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 #~/.fzf/install --all
 #   vim +'PlugInstall --sync' +qall &> /dev/null
-bash /tmp/dotfiles/install.sh
+echo 'proceeding for ' $1
+bash /tmp/dotfiles/install.sh $1

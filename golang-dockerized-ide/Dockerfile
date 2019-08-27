@@ -1,12 +1,14 @@
 #FROM alpine
 FROM ubuntu:latest
 
+ARG USERNAME 
 LABEL ubuntu docker ide 
 COPY install.sh  /tmp/install.sh 
 COPY dotfiles  /tmp/dotfiles 
 COPY goIdeBin  /tmp/goIdeBin 
+# todo : USERNAME parametric
 
-RUN apt-get -y upgrade && apt update && apt-get install -y software-properties-common && apt update &&\
+RUN echo "usename $USERNAME" && apt-get -y upgrade && apt update && apt-get install -y software-properties-common && apt update &&\
    add-apt-repository -y ppa:jonathonf/vim && \
    add-apt-repository  -y ppa:neovim-ppa/stable && \
    apt-get -y update && \
@@ -24,10 +26,10 @@ RUN apt-get -y upgrade && apt update && apt-get install -y software-properties-c
    mv go /usr/local && \
    chmod -R 777  /tmp/goIdeBin && \ 
    chmod -R 777  /tmp/dotfiles  && \ 
-   useradd -rm -d /home/mcipri -s /bin/sh -g root -G sudo -u 1000 mcipri && \
-   su - mcipri -c "bash /tmp/install.sh" 
+   useradd -rm -d /home/$USERNAME -s /bin/sh -g root -G sudo -u 1000 $USERNAME && \
+   su - $USERNAME -c "bash /tmp/install.sh $USERNAME" 
     
 
-USER mcipri
-WORKDIR /home/mcipri
+USER $USERNAME
+WORKDIR /home/$USERNAME
 

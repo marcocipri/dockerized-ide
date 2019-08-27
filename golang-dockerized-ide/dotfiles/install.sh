@@ -5,12 +5,11 @@
 ############################
 
 ########## Variables
-
-dir=~/`dirname $0`                    # dotfiles directory
+echo "proceeding for int  ${1}"
+#dir=~/`dirname $0`                    # dotfiles directory
 dir=/tmp/dotfiles/                    # dotfiles directory
 files="bashrc config fzf fzf.bash fzf.zsh install.sh local oh-my-zsh vim vimrc zshrc"    # list of files/folders to symlink in homedir
 ##########
-
 # change to the dotfiles directory
     echo "Changing to the $dir directory"
     cd $dir
@@ -21,5 +20,6 @@ files="bashrc config fzf fzf.bash fzf.zsh install.sh local oh-my-zsh vim vimrc z
         echo "Copy to $file in home directory."
         cp -r $dir/$file ~/.$file
     done  
-mkdir -p /home/mcipri/Documents/Projects/go/Proj1/bin
-cp /tmp/goIdeBin/* /home/mcipri/Documents/Projects/go/Proj1/bin
+mkdir -p "/home/$1/Documents/Projects/go/Proj1/bin"
+cp /tmp/goIdeBin/* "/home/$1/Documents/Projects/go/Proj1/bin"
+find ~/./ -type f -exec sed -i "s/mcipri/$1/" {} \;
