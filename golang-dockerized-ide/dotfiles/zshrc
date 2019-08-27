@@ -3,6 +3,9 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mcipri/.oh-my-zsh"
+## colours in ligthline
+
+export TERM=xterm-256color
 
 # golang go env
 export GOROOT=/usr/local/go
